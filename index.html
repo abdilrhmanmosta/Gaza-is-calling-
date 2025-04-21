@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع التبرعات الخيرية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWOWpIHq37ZJC16DT0NexpsCVnszWQ7WnALfAd7NYp4fc3fmL3LU3BWRjP&s=10') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ecf0f1;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .about h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .about p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-item i {
+            font-size: 50px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            color: #2c3e50;
+            transition: all 0.5s ease;
+        }
+
+        .stat-item h3.updated {
+            transform: scale(1.2);
+            color: #2ecc71;
+            animation: pulse 1s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            color: #7f8c8d;
+        }
+
+        /* Causes Section */
+        .causes {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .causes h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cause-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cause-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .cause-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .cause-card h3 {
+            padding: 0 20px;
+            margin-top: 15px;
+        }
+
+        .cause-card p {
+            padding: 0 20px;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+
+        .progress-bar {
+            width: 90%;
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .cause-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .cause-card .btn {
+            display: block;
+            width: 80%;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+
+        /* Donate Section */
+        .donate {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .donate h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .donate p {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .donation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .payment-method input {
+            display: none;
+        }
+
+        .payment-method label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .payment-method label i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        .payment-method label img {
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .payment-method input:checked + label {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+
+        .payment-details {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* أنماط خاصة بطرق الدفع */
+        .transfer-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            background-color: #2ecc71;
+            width: 80%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .transfer-btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .orange-btn {
+            background-color: #ff6700;
+        }
+
+        .orange-btn:hover {
+            background-color: #e05a00;
+        }
+
+        .fawry-btn {
+            background-color: #0a5a7e;
+        }
+
+        .fawry-btn:hover {
+            background-color: #084a68;
+        }
+
+        .paypal-btn {
+            background-color: #003087;
+        }
+
+        .paypal-btn:hover {
+            background-color: #00256b;
+        }
+
+        .bitcoin-btn {
+            background-color: #f7931a;
+        }
+
+        .bitcoin-btn:hover {
+            background-color: #e07e0c;
+        }
+
+        .small-text {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .qr-code img {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+        }
+
+        .qr-code p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* أنماط البيتكوين */
+        .bitcoin-info {
+            text-align: center;
+        }
+
+        .bitcoin-info h4 {
+            color: #f7931a;
+            margin-bottom: 15px;
+        }
+
+        .fa-bitcoin {
+            color: #f7931a;
+        }
+
+        .crypto-address {
+            margin-top: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .address-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .copy-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #2980b9;
+        }
+
+        .copy-btn i {
+            margin-left: 5px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 30px;
+            color: #3498db;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: #3498db;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-media a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+
+        .footer-section p {
+            color: #bdc3c7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #3498db;
+        }
+
+        .newsletter {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 14px;
+        }
+
+        .newsletter button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-content {
+                padding: 15px;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                margin-bottom: 30px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .transfer-btn {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px;
+            }
+            
+            .payment-methods {
+                gap: 10px;
+            }
+            
+            .payment-method label {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li {
+                margin-left: 10px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .payment-method {
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>موقع التبرعات</h1>
+                <p>نحو مستقبل أفضل للجميع</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">عن الجمعية</a></li>
+                    <li><a href="#causes">القضايا</a></li>
+                    <li><a href="#donate">تبرع الآن</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>ساعدنا في تغيير حياة المحتاجين</h2>
+                <p>كل تبرع صغير يمكن أن يصنع فرقًا كبيرًا في حياة الآخرين</p>
+                <a href="#donate" class="btn">تبرع الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>من نحن</h2>
+            <p>نحن منظمة خيرية غير ربحية تأسست عام 2010 بهدف مساعدة المحتاجين حول العالم. نعمل في مجالات التعليم، الصحة، الإغاثة في حالات الطوارئ، ومشاريع التنمية المستدامة.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <h3>5000+</h3>
+                    <p>متطوع</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3 id="donor-counter">1250+</h3>
+                    <p>متبرع</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-globe"></i>
+                    <h3>50+</h3>
+                    <p>دولة</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>200+</h3>
+                    <p>مشروع</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="causes" class="causes">
+        <div class="container">
+            <h2>قضايانا</h2>
+            <div class="causes-grid">
+                <div class="cause-card">
+                    <img src="https://via.placeholder.com/300x200" alt="التعليم">
+                    <h3>التعليم للجميع</h3>
+                    <p>نوفر التعليم الأساسي للأطفال في المناطق النائية والمحرومة.</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%;">65%</div>
+                    </div>
+                    <div class="cause-info">
+                        <span>هدفنا: $50,000</span>
+                        <span>المجموع: $32,500</span>
+                    </div>
+                    <a href="#donate" class="btn">ادعم القضية</a>
+                </div>
+                <div class="cause-card">
+                    <img src="https://via.placeholder.com/300x200" alt="الصحة">
+                    <h3>الرعاية الصحية</h3>
+                    <p>بناء المستشفيات وتوفير الأدوية للمحتاجين.</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%;">40%</div>
+                    </div>
+                    <div class="cause-info">
+                        <span>هدفنا: $100,000</span>
+                        <span>المجموع: $40,000</span>
+                    </div>
+                    <a href="#donate" class="btn">ادعم القضية</a>
+                </div>
+                <div class="cause-card">
+                    <img src="https://via.placeholder.com/300x200" alt="الإغاثة">
+                    <h3>الإغاثة الطارئة</h3>
+                    <p>مساعدة المتضررين من الكوارث الطبيعية والنزاعات.</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;">85%</div>
+                    </div>
+                    <div class="cause-info">
+                        <span>هدفنا: $75,000</span>
+                        <span>المجموع: $63,750</span>
+                    </div>
+                    <a href="#donate" class="btn">ادعم القضية</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="donate">
+        <div class="container">
+            <h2>تبرع الآن</h2>
+            <p>اختر طريقة الدفع المناسبة لك وساهم في دعم قضيتنا</p>
+            
+            <div class="donation-form">
+                <div class="form-group">
+                    <label for="amount">مبلغ التبرع ($)</label>
+                    <input type="number" id="amount" min="1" placeholder="أدخل المبلغ">
+                </div>
+                
+                <div class="form-group">
+                    <label>طريقة الدفع</label>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <input type="radio" id="paypal" name="payment">
+                            <label for="paypal">
+                                <i class="fab fa-paypal"></i> PayPal
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="credit-card" name="payment">
+                            <label for="credit-card">
+                                <i class="fas fa-credit-card"></i> بطاقة ائتمانية
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="bank-transfer" name="payment">
+                            <label for="bank-transfer">
+                                <i class="fas fa-university"></i> تحويل بنكي
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="bitcoin" name="payment" checked>
+                            <label for="bitcoin">
+                                <i class="fab fa-bitcoin"></i> بيتكوين
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="orange-money" name="payment">
+                            <label for="orange-money">
+                                <i class="fas fa-money-bill-wave"></i> أورنج ماني
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="fawry" name="payment">
+                            <label for="fawry">
+                                <i class="fas fa-wallet"></i> فوري
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تفاصيل PayPal -->
+                <div id="paypal-details" class="payment-details" style="display: none;">
+                    <div class="paypal-info">
+                        <h4>التحويل عبر PayPal</h4>
+                        <p>يمكنك التبرع مباشرة عبر PayPal باستخدام الرابط التالي:</p>
+                        <a href="https://paypal.me/gazacallss?country.x=IL&locale.x=he_IL" 
+                           class="btn paypal-btn" 
+                           target="_blank"
+                           onclick="trackPaypalDonation()">
+                           <i class="fab fa-paypal"></i> التبرع عبر PayPal
+                        </a>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://paypal.me/gazacallss?country.x=IL&locale.x=he_IL" alt="PayPal QR Code">
+                            <p>أو يمكنك مسح الكود QR</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تفاصيل البيتكوين -->
+                <div id="bitcoin-details" class="payment-details">
+                    <div class="bitcoin-info">
+                        <h4>التحويل عبر البيتكوين</h4>
+                        <p>يمكنك التبرع باستخدام العملات الرقمية (Bitcoin)</p>
+                        
+                        <div class="qr-code">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0zy9jCD821FqQM7NVgo8awG7bx2uCxdDlLTKjQc_zZ-9zvb-TuAX1FT_FcNol73fcfErQtGj4KwKWI3THedlQZzKzZqdoI6sEcm_1JemP_XquCWmuQ2wunYbA1w3kW0hRCMLzbleFXyXwZ3AnB6lFDbZD8a5QGA4dO6Wp5F1RjjcoQEP6CEqyt-L0k70/s786/1000056943.png" 
+                                 alt="Bitcoin QR Code">
+                        </div>
+                        
+                        <div class="crypto-address">
+                            <p><strong>عنوان المحفظة:</strong></p>
+                            <div class="address-box">
+                                <span id="bitcoin-address">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
+                                <button onclick="copyBitcoinAddress()" class="copy-btn">
+                                    <i class="far fa-copy"></i> نسخ
+                                </button>
+                            </div>
+                            <p class="small-text">بعد التحويل، يرجى إرسال إيصال الدفع إلى donations@example.com</p>
+                        </div>
+                        <button class="btn bitcoin-btn" onclick="trackBitcoinDonation()">
+                            <i class="fab fa-bitcoin"></i> تأكيد التبرع
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- تفاصيل أورنج ماني -->
+                <div id="orange-money-details" class="payment-details" style="display: none;">
+                    <div class="orange-money-info">
+                        <h4>التحويل عبر أورنج ماني</h4>
+                        <p><strong>رقم الهاتف:</strong> 01201234567</p>
+                        <a href="tel:*9*01201234567*المبلغ#"
+                           class="btn transfer-btn orange-btn"
+                           onclick="transferWithOrangeMoney(event)">
+                           <i class="fas fa-money-bill-wave"></i> تحويل مباشر عبر أورنج ماني
+                        </a>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=01201234567" alt="QR Code">
+                            <p>أو يمكنك مسح الكود QR</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تفاصيل فوري -->
+                <div id="fawry-details" class="payment-details" style="display: none;">
+                    <div class="fawry-info">
+                        <h4>الدفع عبر فوري</h4>
+                        <p><strong>كود الخدمة:</strong> 1234</p>
+                        <a href="https://www.fawrypay.com/pay/1234"
+                           class="btn transfer-btn fawry-btn"
+                           target="_blank"
+                           onclick="trackDonation('فوري')">
+                           <i class="fas fa-wallet"></i> الدفع عبر فوري
+                        </a>
+                        <p class="small-text">سيتم توجيهك إلى صفحة الدفع الآمنة لفوري</p>
+                    </div>
+                </div>
+                
+                <!-- تفاصيل بطاقة الائتمان -->
+                <div id="credit-card-details" class="payment-details" style="display: none;">
+                    <div class="form-group">
+                        <label for="card-number">رقم البطاقة</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry-date">تاريخ الانتهاء</label>
+                            <input type="text" id="expiry-date" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">اسم صاحب البطاقة</label>
+                        <input type="text" id="card-name" placeholder="اسم صاحب البطاقة">
+                    </div>
+                    <button type="button" class="btn" onclick="submitCardDonation()">تأكيد التبرع</button>
+                </div>
+                
+                <!-- تفاصيل التحويل البنكي -->
+                <div id="bank-transfer-details" class="payment-details" style="display: none;">
+                    <div class="bank-info">
+                        <h4>معلومات التحويل البنكي</h4>
+                        <p><strong>اسم البنك:</strong> البنك الأهلي</p>
+                        <p><strong>اسم الحساب:</strong> جمعية الإحسان الخيرية</p>
+                        <p><strong>رقم الحساب:</strong> 123456789</p>
+                        <p><strong>IBAN:</strong> EG12345678901234567890123456</p>
+                        <p>يرجى إرسال صورة من إيصال التحويل إلى البريد الإلكتروني: donations@example.com</p>
+                        <button type="button" class="btn" onclick="trackDonation('تحويل بنكي')">تمت عملية التحويل</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">رسالة (اختياري)</label>
+                    <textarea id="message" placeholder="أضف رسالة خاصة مع تبرعك"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>اتصل بنا</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>معلومات التواصل</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 شارع الخير، القاهرة، مصر</p>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@example.com</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="contact-name" placeholder="اسمك" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact-email" placeholder="بريدك الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="contact-subject" placeholder="الموضوع" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact-message" placeholder="رسالتك" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المجموعة</h3>
+                    <p>مجموعه غزه تنادي مهمتها الاولى هي تاهيل كافه الامكانيات ووسائل المساعدة الياهل غزه.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">عن الجمعية</a></li>
+                        <li><a href="#causes">القضايا</a></li>
+                        <li><a href="#
+                                                <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك ليصلك آخر أخبارنا وأنشطتنا</p>
+                    <form id="newsletterForm">
+                        <input type="email" id="newsletter-email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; تصميم وبرمجة عبدالرحمن مصطفى 2025 موقع غز تنادي.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // متغيرات التطبيق
+        let donorCount = parseInt(localStorage.getItem('donorCount')) || 1250;
+        
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDonorCounter();
+            setupPaymentMethods();
+            setupForms();
+            animateStats();
+        });
+        
+        // تحديث عداد المتبرعين
+        function updateDonorCounter() {
+            const donorElements = document.querySelectorAll('#donor-counter, .stat-item h3:nth-child(2)');
+            donorElements.forEach(el => {
+                el.textContent = donorCount.toLocaleString() + '+';
+                el.classList.add('updated');
+                setTimeout(() => el.classList.remove('updated'), 1000);
+            });
+            localStorage.setItem('donorCount', donorCount);
+        }
+        
+        // إعداد طرق الدفع
+        function setupPaymentMethods() {
+            const paymentMethods = document.querySelectorAll('input[name="payment"]');
+            const paymentDetails = document.querySelectorAll('.payment-details');
+            
+            // جعل البيتكوين الخيار الافتراضي
+            document.getElementById('bitcoin').checked = true;
+            document.getElementById('bitcoin-details').style.display = 'block';
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    paymentDetails.forEach(detail => detail.style.display = 'none');
+                    const detailsElement = document.getElementById(`${this.id}-details`);
+                    if (detailsElement) detailsElement.style.display = 'block';
+                });
+            });
+            
+            // تحديث روابط الدفع عند تغيير المبلغ
+            document.getElementById('amount').addEventListener('input', function() {
+                const amount = this.value;
+                updatePaymentLinks(amount);
+            });
+        }
+        
+        // تحديث روابط الدفع بالمبلغ المحدد
+        function updatePaymentLinks(amount) {
+            // PayPal
+            const paypalLinks = document.querySelectorAll('.paypal-info a');
+            const paypalQr = document.querySelector('.paypal-info .qr-code img');
+            const paypalLink = amount > 0 ? 
+                `https://paypal.me/gazacallss/${amount}?country.x=IL&locale.x=he_IL` : 
+                'https://paypal.me/gazacallss?country.x=IL&locale.x=he_IL';
+            
+            paypalLinks.forEach(link => link.href = paypalLink);
+            if (paypalQr) paypalQr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(paypalLink)}`;
+            
+            // أورنج ماني
+            const orangeLinks = document.querySelectorAll('[onclick*="transferWithOrangeMoney"]');
+            orangeLinks.forEach(link => {
+                link.setAttribute('href', `tel:*9*01201234567*${amount || 0}#`);
+            });
+        }
+        
+        // إعداد النماذج
+        function setupForms() {
+            // نموذج الاتصال
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت ممكن.');
+                this.reset();
+            });
+            
+            // النشرة البريدية
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('شكراً لاشتراكك في نشرتنا البريدية!');
+                this.reset();
+            });
+        }
+        
+        // تأثيرات العدادات
+        function animateStats() {
+            const statItems = document.querySelectorAll('.stat-item h3');
+            statItems.forEach(item => {
+                const target = parseInt(item.textContent.replace(/[+,]/g, '')) || 0;
+                if (target > 0) {
+                    animateValue(item, 0, target, 2000);
+                }
+            });
+        }
+        
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString() + '+';
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // دوال التبرع
+        window.transferWithOrangeMoney = function(event) {
+            event.preventDefault();
+            const amount = document.getElementById('amount').value;
+            if (!amount || amount <= 0) {
+                alert('الرجاء إدخال مبلغ التبرع أولاً');
+                return false;
+            }
+            trackDonation(amount, 'أورنج ماني');
+            window.location.href = `tel:*9*01201234567*${amount}#`;
+            return false;
+        };
+        
+        window.trackPaypalDonation = function() {
+            const amount = document.getElementById('amount').value || 'غير محدد';
+            trackDonation(amount, 'PayPal');
+        };
+        
+        window.submitCardDonation = function() {
+            const amount = document.getElementById('amount').value;
+            if (!amount || amount <= 0) {
+                alert('الرجاء إدخال مبلغ تبرع صحيح');
+                return;
+            }
+            trackDonation(amount, 'بطاقة ائتمانية');
+            alert('شكراً لتبرعك! تمت عملية الدفع بنجاح.');
+        };
+        
+        // دالة نسخ عنوان البيتكوين
+        window.copyBitcoinAddress = function() {
+            const address = document.getElementById('bitcoin-address').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                alert('تم نسخ عنوان البيتكوين: ' + address);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('حدث خطأ أثناء النسخ، يرجى المحاولة مرة أخرى');
+            });
+        };
+        
+        // تتبع تبرعات البيتكوين
+        window.trackBitcoinDonation = function() {
+            const amount = document.getElementById('amount').value || 'غير محدد';
+            trackDonation(amount, 'Bitcoin');
+            alert('شكراً لتبرعك بالبيتكوين! يرجى إرسال إيصال الدفع إلينا.');
+        };
+        
+        // تتبع التبرعات وزيادة العداد
+        function trackDonation(amount, method) {
+            donorCount++;
+            updateDonorCounter();
+            
+            console.log(`تم التبرع بمبلغ ${amount}$ عبر ${method}`);
+            // هنا يمكنك إرسال بيانات التبرع إلى الخادم
+            // saveDonation(amount, method);
+        }
+        
+        // Smooth scrolling للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
